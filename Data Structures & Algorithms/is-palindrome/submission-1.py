@@ -1,17 +1,15 @@
 class Solution:
     def isPalindrome(self, s: str) -> bool:
-        s=s.lower()
-        info="qwertyuiopasdfghjklzxcvbnm1234567890"
-        f=0
-        l=len(s)-1
-        while f<l:
-            if s[f] not in info:
-                f+=1
-            if s[l] not in info:
-                l-=1
-            if s[f] in info and s[l] in info:
-                if s[f]!=s[l]:
-                    return False
-            f+=1
-            l-=1
+        chars = "abcdefghijklmnopqrstuvwxyz0123456789"
+        s = s.lower()
+        i, j = 0, len(s) - 1
+        while i < j:
+            while i < j and s[i] not in chars:
+                i += 1
+            while j > i and s[j] not in chars:
+                j -= 1
+            if s[i] != s[j]:
+                return False
+            i += 1
+            j -= 1
         return True
